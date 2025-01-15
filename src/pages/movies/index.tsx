@@ -1,5 +1,5 @@
 import { getMovies } from "@/api/movieList";
-import Card from "@/components/card";
+import Card from "@/pages/mainPage/card";
 import { useQuery } from "@tanstack/react-query";
 import { MovieListResponse } from "../mainPage/mainPageTypes/movie.types";
 
