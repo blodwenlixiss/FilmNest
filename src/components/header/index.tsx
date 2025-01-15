@@ -1,6 +1,7 @@
 import { ModeToggle } from "@/utlis/darkTheme/darkButton";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -18,7 +19,28 @@ const Header = () => {
           </svg>
         </Button>
       </div>
-
+      <div>
+        <nav>
+          <ul className="flex gap-5">
+            <li>
+              <NavLink
+                to="/movies"
+                className="hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
+              >
+                Movies
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/tvshows"
+                className="hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
+              >
+                TV Shows
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div>
         <ul className="flex gap-6 items-center">
           <li>
@@ -28,7 +50,12 @@ const Header = () => {
             <ModeToggle />
           </li>
           <li>
-            <Button>Login</Button>
+            <NavLink
+              to="/login"
+              className="hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
+            >
+              Login
+            </NavLink>
           </li>
         </ul>
       </div>

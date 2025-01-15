@@ -1,14 +1,15 @@
-import { Button } from "@/components/ui/button";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const MovieCard: React.FC<{
+const Card: React.FC<{
   imageSrc: string;
-
   vote: number;
   releaseDate: string;
   overview: string;
   title: string;
-}> = ({ imageSrc, vote, releaseDate, overview, title }) => {
+  id: number;
+  type: string;
+}> = ({ imageSrc, vote, releaseDate, overview, title, id, type }) => {
   return (
     <div className="max-w-xs bg-inherit  rounded-lg shadow-xl overflow-hidden relative">
       <div className="relative">
@@ -31,13 +32,16 @@ const MovieCard: React.FC<{
           {overview.substring(0, 80)}...
         </p>
         <div className="">
-          <Button className="absolute bottom-3 right-2 bg-red-600 text-sm py-2 px-4 rounded-lg hover:text-white hover:bg-red-500 transition">
+          <NavLink
+            to={`/${type}/${id}`}
+            className="absolute bottom-3 right-2 bg-red-600 text-sm py-2 px-4 rounded-lg hover:text-white hover:bg-red-500 transition"
+          >
             View More
-          </Button>
+          </NavLink>
         </div>
       </div>
     </div>
   );
 };
 
-export default MovieCard;
+export default Card;

@@ -1,7 +1,8 @@
 import { getRandomMovie } from "@/api/movieList";
+import { Movie } from "@/pages/mainPage/mainPageTypes/movie.types";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Movie } from "@/pages/mainPage/movie.types";
+import { NavLink } from "react-router-dom";
 
 const RandomMovie = () => {
   const [randomMovie, setRandomMovie] = useState<Movie>();
@@ -27,9 +28,12 @@ const RandomMovie = () => {
           src={import.meta.env.VITE_BASE_IMAGE_URL + randomMovie?.poster_path}
           alt={randomMovie?.title}
         />
-        {/* Overlay on hover */}
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md">
-          <span className="text-white text-lg font-semibold">View Details</span>
+          <NavLink to={`movies/${randomMovie?.id}`}>
+            <span className="text-white text-lg font-semibold">
+              View Details
+            </span>
+          </NavLink>
         </div>
       </div>
     </div>
