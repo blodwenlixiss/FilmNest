@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { atom } from "jotai";
 
 const axiosConfig = {
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -9,3 +10,7 @@ const axiosConfig = {
 };
 
 export const httpClientMovie: AxiosInstance = axios.create(axiosConfig);
+
+export type User = boolean | null;
+
+export const userAtom = atom<User>(null);

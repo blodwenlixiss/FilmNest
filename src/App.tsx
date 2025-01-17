@@ -6,6 +6,8 @@ import Movies from "./pages/movies";
 import MovieDetails from "./pages/singlePage/movies";
 import TvShows from "./pages/TVShows";
 import TVShowDetails from "./pages/singlePage/tvShows";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 function App() {
   return (
@@ -20,9 +22,9 @@ function App() {
           <Route path="/planned" />
           <Route path="/in-progress" />
           <Route path="/watched" />
-          <Route path="/login" />
-          <Route path="/register" />
         </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </ThemeProvider>
   );

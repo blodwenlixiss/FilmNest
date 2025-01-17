@@ -1,6 +1,6 @@
 import { getMovies } from "@/api/movieList";
 import { useQuery } from "@tanstack/react-query";
-import Card from "@/pages/mainPage/card";
+import Card from "@/components/card";
 import { MovieListResponse } from "./mainPageTypes/movie.types";
 import CarouselBlock from "./carousell";
 import { TVShowListResponse } from "./mainPageTypes/tvShow.types";

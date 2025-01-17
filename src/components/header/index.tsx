@@ -25,7 +25,7 @@ const Header = () => {
             <li>
               <NavLink
                 to="/movies"
-                className="hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
+                className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
                 Movies
               </NavLink>
@@ -33,7 +33,7 @@ const Header = () => {
             <li>
               <NavLink
                 to="/tvshows"
-                className="hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
+                className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
                 TV Shows
               </NavLink>
@@ -52,7 +52,7 @@ const Header = () => {
           <li>
             <NavLink
               to="/login"
-              className="hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
+              className="transition-colors duration-300 hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
             >
               Login
             </NavLink>

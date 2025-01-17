@@ -8,6 +8,8 @@ body {
 
 @layer base {
   :root {
+    --icon-filter: brightness(0) saturate(0%) invert(0);
+    --icon-hover-filter: brightness(100%) saturate(0%) invert(100%);
     --background: 0 0% 95%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -35,6 +37,7 @@ body {
     --radius: 0.5rem;
   }
   .dark {
+    --icon-filter: brightness(100%) saturate(0%) invert(100%);
     --background: 0 0% 5.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -61,6 +64,14 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+.icon-image {
+  filter: var(--icon-filter);
+}
+
+.icon-image:hover {
+  filter: var(--icon-hover-filter);
+}
+
 @layer base {
   * {
     @apply border-border;

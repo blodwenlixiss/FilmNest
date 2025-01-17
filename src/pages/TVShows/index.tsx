@@ -1,5 +1,5 @@
 import { getTVShows } from "@/api/tvShowList";
-import Card from "@/pages/mainPage/card";
+import Card from "@/components/card";
 import { useQuery } from "@tanstack/react-query";
 import { TVShowListResponse } from "../mainPage/mainPageTypes/tvShow.types";
 
