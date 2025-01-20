@@ -2,8 +2,24 @@ import { ModeToggle } from "@/utlis/darkTheme/darkButton";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { NavLink } from "react-router-dom";
+import { useAtom } from "jotai";
+import { userAtom } from "@/api";
+import { useEffect, useState } from "react";
+import { getProfileInfo } from "@/api/account";
 
 const Header = () => {
+  const [user] = useAtom(userAtom);
+  const [profileImg, setProfileImg] = useState("");
+  useEffect(() => {
+    if (user?.user.id) {
+      getProfileInfo(user.user.id).then((res) => {
+        if (res.data && res.data.length > 0) {
+          setProfileImg(res.data[0].avatar_url || "");
+        }
+      });
+    }
+  }, [user]);
+
   return (
     <header className="bg-background flex justify-between items-center fixed top-0 left-0 w-screen h-16 px-10 z-40 pt-10 pb-10">
       <div className="ml-64 flex gap-2 relative">
@@ -50,12 +66,26 @@ const Header = () => {
             <ModeToggle />
           </li>
           <li>
-            <NavLink
-              to="/login"
-              className="transition-colors duration-300 hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
-            >
-              Login
-            </NavLink>
+            {user ? (
+              <NavLink to="profile">
+                {!profileImg ? (
+                  <img
+                    className="w-10 rounded-full bg-blue-50"
+                    src="https://api.dicebear.com/9.x/avataaars/svg?seed=Felix"
+                    alt="avatar"
+                  />
+                ) : (
+                  <img src={profileImg} alt="profile-image" />
+                )}
+              </NavLink>
+            ) : (
+              <NavLink
+                to="/login"
+                className="transition-colors duration-300 hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
+              >
+                Login
+              </NavLink>
+            )}
           </li>
         </ul>
       </div>

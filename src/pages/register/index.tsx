@@ -34,7 +34,7 @@ const Register = () => {
       {
         onSuccess: (data) => {
           console.log("Account created:", data);
-          navigate("/"); // Redirect after successful signup
+          navigate("/");
         },
         onError: (error) => {
           console.error("Signup failed:", error);
@@ -51,7 +51,6 @@ const Register = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center gap-4 w-full max-w-md"
       >
-        {/** Username */}
         <Controller
           control={control}
           name="username"
@@ -66,8 +65,6 @@ const Register = () => {
         {errors.username && (
           <p className="text-red-800 text-sm mt-2">{errors.username.message}</p>
         )}
-
-        {/** Full Name */}
         <Controller
           control={control}
           name="full_name"
@@ -84,8 +81,6 @@ const Register = () => {
             {errors.full_name.message}
           </p>
         )}
-
-        {/** Email */}
         <Controller
           control={control}
           name="email"
@@ -101,8 +96,6 @@ const Register = () => {
         {errors.email && (
           <p className="text-red-800 text-sm mt-2">{errors.email.message}</p>
         )}
-
-        {/** Password */}
         <Controller
           control={control}
           name="password"

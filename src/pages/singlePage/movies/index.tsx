@@ -1,10 +1,39 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getMovieById } from "@/api/movieList";
 import { MovieDetailsType } from "./index.types";
+import { useAtom } from "jotai";
+import { userAtom } from "@/api";
+import { ButtonList } from "../components/buttonList";
+import { supabase } from "@/api/supabase";
 
 const MovieDetails = () => {
   const { id } = useParams();
+  const [user] = useAtom(userAtom);
+  const handleAddPlanned = async (movies: MovieDetailsType) => {
+    if (movies && user) {
+      const { error } = await supabase.from("planned").insert({
+        title: movies.title ?? "Untitled",
+        overview: movies.overview ?? null,
+        release_date: movies.release_date ?? null,
+        vote_average: movies.vote_average ?? null,
+        genres: movies.genres?.join(", ") ?? null,
+        id: user?.user?.id ?? "",
+        poster_path: movies.poster_path,
+        movie_id: movies.id.toString(),
+      });
+
+      if (error) {
+        console.error("Error adding planned movie:", error.message);
+        alert("Failed to add movie. Please try again.");
+      } else {
+        console.log("Movie added to Planned successfully");
+        alert("Movie added successfully.");
+      }
+    } else {
+      console.log("User not logged in or movie data is missing");
+    }
+  };
 
   const {
     data: movie,
@@ -31,7 +60,6 @@ const MovieDetails = () => {
         </p>
       </div>
     );
-  console.log(movie);
   return (
     <div className="p-10">
       <div className="flex flex-col md:flex-row gap-10">
@@ -63,15 +91,32 @@ const MovieDetails = () => {
             {Math.trunc((movie?.vote_average ?? 0) * 10) / 10}
           </p>
           <div className="mt-6 flex gap-3">
-            <button className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition">
-              Add to Planned
-            </button>
-            <button className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition">
-              Add to In Progress
-            </button>
-            <button className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition">
-              Add to Watched
-            </button>
+            {user ? (
+              <ButtonList onPlanned={() => movie && handleAddPlanned(movie)} />
+            ) : (
+              <div>
+                <p className="mb-5">
+                  Please{" "}
+                  <NavLink
+                    className="underline text-blue-700 font-bold"
+                    to="/login"
+                  >
+                    Log in
+                  </NavLink>{" "}
+                  or{" "}
+                  <NavLink
+                    className="underline text-blue-700 font-bold"
+                    to="/register"
+                  >
+                    Sign up
+                  </NavLink>{" "}
+                  to continue.
+                </p>
+                <div className="flex gap-3">
+                  <ButtonList disabled={true} />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

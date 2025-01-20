@@ -7,9 +7,10 @@ export type LoginTypes = {
 
 export const login = async (credentials: LoginTypes) => {
   const { data, error } = await supabase.auth.signInWithPassword(credentials);
+  console.log(data);
   if (error) {
     console.error("Login error:", error);
-    throw error; // This ensures errors are properly propagated
+    throw error;
   }
 
   console.log("Login success:", data);

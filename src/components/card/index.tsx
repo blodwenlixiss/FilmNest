@@ -7,7 +7,7 @@ const Card: React.FC<{
   releaseDate: string;
   overview: string;
   title: string;
-  id: number;
+  id: string;
   type: string;
 }> = ({ imageSrc, vote, releaseDate, overview, title, id, type }) => {
   return (

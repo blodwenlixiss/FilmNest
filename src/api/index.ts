@@ -1,3 +1,4 @@
+import { Session } from "@supabase/supabase-js";
 import axios, { AxiosInstance } from "axios";
 import { atom } from "jotai";
 
@@ -11,6 +12,6 @@ const axiosConfig = {
 
 export const httpClientMovie: AxiosInstance = axios.create(axiosConfig);
 
-export type User = boolean | null;
+export type User = Session | null;
 
 export const userAtom = atom<User>(null);

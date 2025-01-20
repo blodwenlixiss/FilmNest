@@ -1,4 +1,5 @@
 import { supabase } from "../supabase";
+
 export type SignUpValues = {
   payload: {
     email: string;
@@ -10,6 +11,7 @@ export type SignUpValues = {
 
 export const signUp = async ({ payload }: SignUpValues) => {
   const { email, password, username, full_name } = payload;
+  console.log("Sign-up payload:", { email, password, username, full_name });
 
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -23,21 +25,10 @@ export const signUp = async ({ payload }: SignUpValues) => {
   });
 
   if (error) {
+    console.error("Error during sign-up:", error);
     throw error;
   }
 
-  if (data.user) {
-    const { error: insertError } = await supabase.from("profiles").insert({
-      id: data.user.id,
-      username,
-      full_name,
-      avatar_url: null,
-    });
-
-    if (insertError) {
-      throw insertError;
-    }
-  }
-
+  console.log("User data after sign-up:", data.user);
   return data;
 };
