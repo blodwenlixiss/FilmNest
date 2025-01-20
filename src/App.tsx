@@ -15,6 +15,7 @@ import ProfilePage from "./pages/profile";
 import Planned from "./pages/planned";
 import InProgress from "./pages/progress";
 import Watched from "./pages/watched";
+import SearchResults from "./pages/search";
 
 function App() {
   useAuthListener();
@@ -24,7 +25,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          {/* <Route path="/search" element={<SearchResults />} /> */}
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/movies/:id" element={<MovieDetails />} />
           <Route path="/tvshows" element={<TvShows />} />
           <Route path="/tvshows/:id" element={<TVShowDetails />} />

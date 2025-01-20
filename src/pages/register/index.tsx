@@ -23,7 +23,7 @@ const Register = () => {
     formState: { errors },
   } = useForm<SignUpValues["payload"]>({
     defaultValues: signUpFormDefaultValues,
-    resolver: zodResolver(SignUpSchema), // Make sure `SignUpSchema` validates all fields
+    resolver: zodResolver(SignUpSchema),
   });
 
   const { mutate: handleSignUp } = useSignUp();
@@ -32,13 +32,11 @@ const Register = () => {
     handleSignUp(
       { payload: values },
       {
-        onSuccess: (data) => {
-          console.log("Account created:", data);
+        onSuccess: () => {
           navigate("/");
         },
         onError: (error) => {
           console.error("Signup failed:", error);
-          alert("Signup failed: " + error.message);
         },
       }
     );

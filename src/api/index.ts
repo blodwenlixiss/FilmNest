@@ -10,7 +10,7 @@ const axiosConfig = {
   },
 };
 
-export const httpClientMovie: AxiosInstance = axios.create(axiosConfig);
+export const httpClient: AxiosInstance = axios.create(axiosConfig);
 
 export type User = Session | null;
 

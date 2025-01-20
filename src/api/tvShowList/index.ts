@@ -1,8 +1,8 @@
-import { httpClientMovie } from "..";
+import { httpClient } from "..";
 
 export const getTVShows = async () => {
   try {
-    const res = await httpClientMovie.get(
+    const res = await httpClient.get(
       `tv/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US&page=1`
     );
     return res.data;
@@ -14,7 +14,7 @@ export const getTVShows = async () => {
 
 export const getTVShowsById = async (id: string) => {
   try {
-    const response = await httpClientMovie.get(`/tv/${id}`, {
+    const response = await httpClient.get(`/tv/${id}`, {
       params: {
         language: "en-US",
         api_key: import.meta.env.VITE_API_KEY,

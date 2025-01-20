@@ -11,7 +11,6 @@ export type SignUpValues = {
 
 export const signUp = async ({ payload }: SignUpValues) => {
   const { email, password, username, full_name } = payload;
-  console.log("Sign-up payload:", { email, password, username, full_name });
 
   const { data, error } = await supabase.auth.signUp({
     email,

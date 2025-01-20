@@ -13,6 +13,5 @@ export const login = async (credentials: LoginTypes) => {
     throw error;
   }
 
-  console.log("Login success:", data);
   return data;
 };

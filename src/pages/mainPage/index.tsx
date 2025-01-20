@@ -24,7 +24,6 @@ const Home = () => {
 
   const homeMovieList = movies?.results?.slice(0, 8) || [];
   const homeTVShowsList = tvShows?.results?.slice(0, 8) || [];
-
   return (
     <>
       <div className="mt-5">

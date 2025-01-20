@@ -36,6 +36,7 @@ export type Database = {
     Tables: {
       in_progress: {
         Row: {
+          is_movie: boolean;
           genres: string | null;
           id: string;
           movie_id: string;
@@ -47,6 +48,7 @@ export type Database = {
           vote_average: number | null;
         };
         Insert: {
+          is_movie: boolean;
           genres?: string | null;
           id: string;
           movie_id: string;
@@ -58,6 +60,7 @@ export type Database = {
           vote_average?: number | null;
         };
         Update: {
+          is_movie: boolean;
           genres?: string | null;
           id?: string;
           movie_id?: string;
@@ -72,6 +75,7 @@ export type Database = {
       };
       planned: {
         Row: {
+          is_movie: boolean;
           genres: string | null;
           id: string;
           movie_id: string;
@@ -82,6 +86,7 @@ export type Database = {
           vote_average: number | null;
         };
         Insert: {
+          is_movie: boolean;
           genres?: string | null;
           id: string;
           movie_id: string;
@@ -92,6 +97,7 @@ export type Database = {
           vote_average?: number | null;
         };
         Update: {
+          is_movie: boolean;
           genres?: string | null;
           id?: string;
           movie_id?: string;
@@ -129,6 +135,7 @@ export type Database = {
       };
       watched: {
         Row: {
+          is_movie: boolean;
           genres: string | null;
           id: string;
           movie_id: string;
@@ -140,6 +147,7 @@ export type Database = {
           vote_average: number | null;
         };
         Insert: {
+          is_movie: boolean;
           genres?: string | null;
           id: string;
           movie_id: string;
@@ -151,6 +159,7 @@ export type Database = {
           vote_average?: number | null;
         };
         Update: {
+          is_movie: boolean;
           genres?: string | null;
           id?: string;
           movie_id?: string;

@@ -27,9 +27,7 @@ const Login = () => {
 
   const { mutate: handleLogin } = useMutation({
     mutationFn: login,
-    onSuccess: (data) => {
-      console.log("Login successful", data);
-
+    onSuccess: () => {
       navigate("/");
     },
     onError: (error) => {

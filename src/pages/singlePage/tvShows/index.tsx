@@ -5,6 +5,9 @@ import { userAtom } from "@/api";
 import { useAtom } from "jotai";
 import { TvShowDetails } from "./index.types";
 import { ButtonList } from "../components/buttonList";
+import { handleAddInProgress } from "../util/handleAddInProgress";
+import { handleAddWatched } from "../util/handleAddWatched";
+import { handleAddPlanned } from "../util/handleAddPlanned";
 
 const TVShowDetails = () => {
   const { id } = useParams();
@@ -55,7 +58,18 @@ const TVShowDetails = () => {
           <div className="mt-6 flex gap-3">
             {user ? (
               <>
-                <ButtonList />
+                <ButtonList
+                  onInProgress={() =>
+                    tvShow && handleAddInProgress(user, tvShow, false)
+                  }
+                  onWatched={() =>
+                    tvShow && handleAddWatched(user, tvShow, false)
+                  }
+                  onPlanned={() =>
+                    tvShow && handleAddPlanned(user, tvShow, false)
+                  }
+                  disabled={false}
+                />
               </>
             ) : (
               <div>
@@ -77,7 +91,12 @@ const TVShowDetails = () => {
                   to continue.
                 </p>
                 <div className="flex gap-3">
-                  <ButtonList disabled={true} />
+                  <ButtonList
+                    onWatched={() => console.log("rame")}
+                    onInProgress={() => console.log("rame")}
+                    onPlanned={() => console.log("rame")}
+                    disabled={true}
+                  />
                 </div>
               </div>
             )}

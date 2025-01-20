@@ -5,35 +5,12 @@ import { MovieDetailsType } from "./index.types";
 import { useAtom } from "jotai";
 import { userAtom } from "@/api";
 import { ButtonList } from "../components/buttonList";
-import { supabase } from "@/api/supabase";
-
+import { handleAddInProgress } from "../util/handleAddInProgress";
+import { handleAddPlanned } from "../util/handleAddPlanned";
+import { handleAddWatched } from "../util/handleAddWatched";
 const MovieDetails = () => {
   const { id } = useParams();
   const [user] = useAtom(userAtom);
-  const handleAddPlanned = async (movies: MovieDetailsType) => {
-    if (movies && user) {
-      const { error } = await supabase.from("planned").insert({
-        title: movies.title ?? "Untitled",
-        overview: movies.overview ?? null,
-        release_date: movies.release_date ?? null,
-        vote_average: movies.vote_average ?? null,
-        genres: movies.genres?.join(", ") ?? null,
-        id: user?.user?.id ?? "",
-        poster_path: movies.poster_path,
-        movie_id: movies.id.toString(),
-      });
-
-      if (error) {
-        console.error("Error adding planned movie:", error.message);
-        alert("Failed to add movie. Please try again.");
-      } else {
-        console.log("Movie added to Planned successfully");
-        alert("Movie added successfully.");
-      }
-    } else {
-      console.log("User not logged in or movie data is missing");
-    }
-  };
 
   const {
     data: movie,
@@ -92,7 +69,14 @@ const MovieDetails = () => {
           </p>
           <div className="mt-6 flex gap-3">
             {user ? (
-              <ButtonList onPlanned={() => movie && handleAddPlanned(movie)} />
+              <ButtonList
+                disabled={false}
+                onWatched={() => movie && handleAddWatched(user, movie, true)}
+                onInProgress={() =>
+                  movie && handleAddInProgress(user, movie, true)
+                }
+                onPlanned={() => movie && handleAddPlanned(user, movie, true)}
+              />
             ) : (
               <div>
                 <p className="mb-5">
@@ -113,7 +97,12 @@ const MovieDetails = () => {
                   to continue.
                 </p>
                 <div className="flex gap-3">
-                  <ButtonList disabled={true} />
+                  <ButtonList
+                    onWatched={() => console.log("rame")}
+                    onInProgress={() => console.log("rame")}
+                    onPlanned={() => console.log("rame")}
+                    disabled={true}
+                  />
                 </div>
               </div>
             )}

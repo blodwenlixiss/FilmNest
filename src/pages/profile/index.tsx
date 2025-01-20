@@ -24,7 +24,6 @@ const ProfilePage = () => {
     if (user?.user?.id) {
       getProfileInfo(user.user.id).then((res) => {
         if (res?.data && res.data.length > 0) {
-          console.log(res.data);
           setProfile({
             avatar_url: res?.data[0].avatar_url ?? null,
             full_name: res?.data[0].full_name ?? null,
