@@ -40,12 +40,7 @@ const Login = () => {
 
   return (
     <>
-      <div>
-        <NavLink className="bg-slate-400" to="/">
-          {t("Back")}
-        </NavLink>
-      </div>
-      <div className="w-full h-screen flex flex-col items-center justify-center">
+      <div className=" p-5 w-full h-screen flex flex-col items-center justify-center">
         <h1 className="font-bold mb-10 text-3xl uppercase">FilmNest</h1>
         <div className="flex flex-col items-center gap-4 w-full max-w-md">
           <form

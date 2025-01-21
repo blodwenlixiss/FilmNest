@@ -23,7 +23,7 @@ export function SearchFilter({
   };
   return (
     <Select value={type} onValueChange={handleChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-auto lg:w-[180px]">
         <SelectValue placeholder="Type" />
       </SelectTrigger>
       <SelectContent>

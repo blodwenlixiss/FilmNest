@@ -45,7 +45,7 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center">
+    <div className="p-5 w-full h-screen flex flex-col items-center justify-center">
       <h1 className="font-bold mb-10 text-3xl uppercase">FilmNest</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
