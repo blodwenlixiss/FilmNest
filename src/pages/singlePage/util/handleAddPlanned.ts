@@ -1,7 +1,7 @@
 import { supabase } from "@/api/supabase";
 import { Session } from "@supabase/supabase-js";
-import { MovieDetailsType } from "../movies/index.types";
-import { TvShowDetails } from "../tvShows/index.types";
+import { MovieDetailsType } from "../../../types/singlePage/singleMovie.types";
+import { TvShowDetails } from "../../../types/singlePage/singleTvshow.types";
 
 export const handleAddPlanned = async (
   user: Session | null,

@@ -1,4 +1,4 @@
-import { ModeToggle } from "@/utlis/darkTheme/darkButton";
+import { ModeToggle } from "@/hooks/useDarkTheme";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";

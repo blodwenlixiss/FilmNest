@@ -1,6 +1,9 @@
 import { Session } from "@supabase/supabase-js";
 import axios, { AxiosInstance } from "axios";
 import { atom } from "jotai";
+import { login } from "./login";
+import { getMovies } from "./movieList";
+export { login, getMovies };
 
 const axiosConfig = {
   baseURL: import.meta.env.VITE_BASE_URL,

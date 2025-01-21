@@ -1,4 +1,4 @@
-import { ProfileType } from "@/pages/profile/profile.types";
+import { ProfileType } from "@/types/profilePage/profile.types";
 import { supabase } from "../supabase";
 
 export const getProfileInfo = (id: string) => {

@@ -1,7 +1,7 @@
 import Card from "@/components/card";
 import CarouselBlock from "./carousell";
 import { useMovies } from "@/hooks/useGetMovies";
-import useTVShows from "@/hooks/useGetTVShows";
+import { useTVShows } from "@/hooks/useGetTVShows";
 
 const Home = () => {
   const { movies } = useMovies();

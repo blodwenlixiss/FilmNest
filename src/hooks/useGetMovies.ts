@@ -1,6 +1,6 @@
 import { getMovieById, getMovies } from "@/api/movieList";
-import { MovieListResponse } from "@/pages/mainPage/mainPageTypes/movie.types";
-import { MovieDetailsType } from "@/pages/singlePage/movies/index.types";
+import { MovieListResponse } from "@/types/mainPageTypes/movie.types";
+import { MovieDetailsType } from "@/types/singlePage/singleMovie.types";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";

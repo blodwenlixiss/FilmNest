@@ -1,5 +1,5 @@
 import { getRandomMovie } from "@/api/movieList";
-import { Movie } from "@/pages/mainPage/mainPageTypes/movie.types";
+import { Movie } from "@/types/mainPageTypes/movie.types";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";

@@ -3,10 +3,10 @@ import { getTVShows, getTVShowsById } from "@/api/tvShowList";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { TVShowListResponse } from "@/pages/mainPage/mainPageTypes/tvShow.types";
-import { TvShowDetails } from "@/pages/singlePage/tvShows/index.types";
+import { TVShowListResponse } from "@/types/mainPageTypes/tvShow.types";
+import { TvShowDetails } from "@/types/singlePage/singleTvshow.types";
 
-const useTVShows = () => {
+export const useTVShows = () => {
   const { i18n } = useTranslation();
   const queryClient = useQueryClient();
 
@@ -30,8 +30,6 @@ const useTVShows = () => {
 
   return { tvShows };
 };
-
-export default useTVShows;
 
 export const useTVShowDetails = (id: string | undefined) => {
   const { i18n } = useTranslation();

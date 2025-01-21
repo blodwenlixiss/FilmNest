@@ -4,7 +4,7 @@ import { getProfileInfo, logout, updateProfileInfo } from "@/api/account";
 import { userAtom } from "@/api";
 import { useAtom } from "jotai";
 import { useState, useEffect } from "react";
-import { ProfileType } from "./profile.types";
+import { ProfileType } from "../../types/profilePage/profile.types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Controller, useForm } from "react-hook-form";

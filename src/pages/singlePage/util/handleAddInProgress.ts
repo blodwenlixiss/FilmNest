@@ -1,7 +1,7 @@
 import { supabase } from "@/api/supabase";
-import { MovieDetailsType } from "../movies/index.types";
+import { MovieDetailsType } from "../../../types/singlePage/singleMovie.types";
 import { Session } from "@supabase/supabase-js";
-import { TvShowDetails } from "../tvShows/index.types";
+import { TvShowDetails } from "../../../types/singlePage/singleTvshow.types";
 
 export const handleAddInProgress = async (
   user: Session | null,

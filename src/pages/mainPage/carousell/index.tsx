@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Movie } from "../mainPageTypes/movie.types";
+import { Movie } from "../../../types/mainPageTypes/movie.types";
 import { NavLink } from "react-router-dom";
 
 const CarouselBlock = () => {
