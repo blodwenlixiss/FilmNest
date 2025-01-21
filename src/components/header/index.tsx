@@ -102,7 +102,7 @@ const Header = () => {
           <ul className="flex gap-5">
             <li>
               <NavLink
-                to="/movies"
+                to="/movie"
                 className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
                 {t("Movies")}
@@ -110,7 +110,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/tvshows"
+                to="/tv"
                 className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
                 {t("TVShows")}
