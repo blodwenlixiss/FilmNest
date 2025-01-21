@@ -8,8 +8,7 @@ import TvShows from "./pages/TVShows";
 import TVShowDetails from "./pages/singlePage/tvShows";
 import Login from "./pages/login";
 import Register from "./pages/register";
-// import SearchResults from "./pages/search";
-import { useAuthListener } from "./hooks";
+import { useAuthListener } from "./hooks/useAuthListener";
 import { ProfileGuard, RouteGuard } from "./components/routeGuard";
 import ProfilePage from "./pages/profile";
 import Planned from "./pages/planned";
@@ -24,11 +23,11 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/movie" element={<Movies />} />
           <Route path="/search" element={<SearchResults />} />
-          <Route path="/movies/:id" element={<MovieDetails />} />
-          <Route path="/tvshows" element={<TvShows />} />
-          <Route path="/tvshows/:id" element={<TVShowDetails />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/tvshow" element={<TvShows />} />
+          <Route path="/tvshow/:id" element={<TVShowDetails />} />
           <Route
             path="/planned"
             element={
