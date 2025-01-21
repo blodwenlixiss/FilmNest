@@ -22,6 +22,11 @@ const resources = {
       FullName: "Full Name",
       SignUpFailed: "Sign-up failed:",
       HaveAccount: "Have an account?",
+      pleaseLogin: "Please",
+      logIn: "Log in",
+      or: "or",
+      signUp: "Sign up",
+      toContinue: "to continue",
     },
   },
   ka: {
@@ -44,6 +49,11 @@ const resources = {
       FullName: "სრული სახელი",
       SignUpFailed: "რეგისტრაცია ვერ მოხერხდა:",
       HaveAccount: "გაქვთ ანგარიში?",
+      pleaseLogin: "გთხოვთ",
+      logIn: "შესვლა",
+      or: "ან",
+      signUp: "რეგისტრაცია",
+      toContinue: "საგრძელებლად",
     },
   },
 };

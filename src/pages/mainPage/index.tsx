@@ -1,28 +1,11 @@
-import { getMovies } from "@/api/movieList";
-import { useQuery } from "@tanstack/react-query";
 import Card from "@/components/card";
-import { MovieListResponse } from "./mainPageTypes/movie.types";
 import CarouselBlock from "./carousell";
-import { TVShowListResponse } from "./mainPageTypes/tvShow.types";
-import { getTVShows } from "@/api/tvShowList";
+import { useMovies } from "@/hooks/useGetMovies";
+import useTVShows from "@/hooks/useGetTVShows";
 
 const Home = () => {
-  const {
-    data: movies,
-    isLoading,
-    isError,
-  } = useQuery<MovieListResponse>({
-    queryKey: ["fetchMovies"],
-    queryFn: async () => await getMovies(),
-  });
-
-  const { data: tvShows } = useQuery<TVShowListResponse>({
-    queryKey: ["fetchTVShows"],
-    queryFn: async () => await getTVShows(),
-  });
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching movies.</div>;
+  const { movies } = useMovies();
+  const { tvShows } = useTVShows();
 
   const homeMovieList = movies?.results?.slice(0, 8) || [];
   const homeTVShowsList = tvShows?.results?.slice(0, 8) || [];

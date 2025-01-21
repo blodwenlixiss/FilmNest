@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { t } from "i18next";
 import React from "react";
 
 interface ButtonListProps {
@@ -21,21 +22,21 @@ export const ButtonList: React.FC<ButtonListProps> = ({
         onClick={onPlanned}
         className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition"
       >
-        Add to Planned
+        {t("Planned")}
       </Button>
       <Button
         disabled={disabled}
         onClick={onInProgress}
         className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition"
       >
-        Add to In Progress
+        {t("InProgress")}
       </Button>
       <Button
         onClick={onWatched}
         disabled={disabled}
         className="px-4 py-2 bg-red-600 text-white font-bold rounded-lg shadow hover:bg-red-500 transition"
       >
-        Add to Watched
+        {t("Watched")}
       </Button>
     </>
   );

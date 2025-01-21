@@ -1,13 +1,30 @@
 import { getTVShows } from "@/api/tvShowList";
 import Card from "@/components/card";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { TVShowListResponse } from "../mainPage/mainPageTypes/tvShow.types";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const TvShows = () => {
+  const queryClient = useQueryClient();
+  const { i18n } = useTranslation();
+  const fetchTVShows = async () => await getTVShows();
   const { data: tvShows } = useQuery<TVShowListResponse>({
     queryKey: ["fetchTVShows"],
-    queryFn: async () => await getTVShows(),
+    queryFn: fetchTVShows,
   });
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      queryClient.invalidateQueries({ queryKey: ["fetchMovies"] });
+    };
+
+    i18n.on("languageChanged", handleLanguageChange);
+
+    return () => {
+      i18n.off("languageChanged", handleLanguageChange);
+    };
+  }, [i18n, queryClient]);
+
   return (
     <div className="py-10">
       <h2 className="text-2xl font-bold mb-6">TV-Shows</h2>

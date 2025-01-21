@@ -1,30 +1,17 @@
 import { NavLink, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getTVShowsById } from "@/api/tvShowList";
 import { userAtom } from "@/api";
 import { useAtom } from "jotai";
-import { TvShowDetails } from "./index.types";
 import { ButtonList } from "../components/buttonList";
 import { handleAddInProgress } from "../util/handleAddInProgress";
 import { handleAddWatched } from "../util/handleAddWatched";
 import { handleAddPlanned } from "../util/handleAddPlanned";
+import { useTVShowDetails } from "@/hooks/useGetTVShows";
+import { t } from "i18next";
 
 const TVShowDetails = () => {
   const { id } = useParams();
   const [user] = useAtom(userAtom);
-
-  const {
-    data: tvShow,
-    isLoading,
-    isError,
-  } = useQuery<TvShowDetails>({
-    queryKey: ["fetchTVShowsDetails", id],
-    queryFn: async () => await getTVShowsById(id as string),
-    enabled: !!id,
-  });
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error loading tvShow details.</div>;
-
+  const { tvShow } = useTVShowDetails(id);
   return (
     <div className="p-10">
       <div className="flex flex-col md:flex-row gap-10">
@@ -74,21 +61,21 @@ const TVShowDetails = () => {
             ) : (
               <div>
                 <p className="mb-5">
-                  Please{" "}
+                  {t("pleaseLogin")}{" "}
                   <NavLink
                     className="underline text-blue-700 font-bold"
                     to="/login"
                   >
-                    Log in
+                    {t("logIn")}
                   </NavLink>{" "}
-                  or{" "}
+                  {t("or")}{" "}
                   <NavLink
                     className="underline text-blue-700 font-bold"
                     to="/register"
                   >
-                    Sign up
+                    {t("signUp")}
                   </NavLink>{" "}
-                  to continue.
+                  {t("toContinue")}.
                 </p>
                 <div className="flex gap-3">
                   <ButtonList

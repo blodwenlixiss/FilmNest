@@ -1,42 +1,19 @@
 import { NavLink, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getMovieById } from "@/api/movieList";
-import { MovieDetailsType } from "./index.types";
 import { useAtom } from "jotai";
 import { userAtom } from "@/api";
 import { ButtonList } from "../components/buttonList";
 import { handleAddInProgress } from "../util/handleAddInProgress";
 import { handleAddPlanned } from "../util/handleAddPlanned";
 import { handleAddWatched } from "../util/handleAddWatched";
+import { useMovieDetails } from "@/hooks/useGetMovies";
+import { t } from "i18next";
+
 const MovieDetails = () => {
   const { id } = useParams();
   const [user] = useAtom(userAtom);
 
-  const {
-    data: movie,
-    isLoading,
-    isError,
-  } = useQuery<MovieDetailsType>({
-    queryKey: ["fetchMovieDetails", id],
-    queryFn: async () => await getMovieById(id as string),
-    enabled: !!id,
-  });
+  const { movie } = useMovieDetails(id);
 
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-xl font-semibold">Loading...</p>
-      </div>
-    );
-
-  if (isError)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-xl font-semibold text-red-500">
-          Error loading movie details.
-        </p>
-      </div>
-    );
   return (
     <div className="p-10">
       <div className="flex flex-col md:flex-row gap-10">
@@ -80,22 +57,23 @@ const MovieDetails = () => {
             ) : (
               <div>
                 <p className="mb-5">
-                  Please{" "}
+                  {t("pleaseLogin")}{" "}
                   <NavLink
                     className="underline text-blue-700 font-bold"
                     to="/login"
                   >
-                    Log in
+                    {t("logIn")}
                   </NavLink>{" "}
-                  or{" "}
+                  {t("or")}{" "}
                   <NavLink
                     className="underline text-blue-700 font-bold"
                     to="/register"
                   >
-                    Sign up
+                    {t("signUp")}
                   </NavLink>{" "}
-                  to continue.
+                  {t("toContinue")}.
                 </p>
+
                 <div className="flex gap-3">
                   <ButtonList
                     onWatched={() => console.log("rame")}

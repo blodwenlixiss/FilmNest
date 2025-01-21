@@ -1,20 +1,8 @@
-import { getMovies } from "@/api/movieList";
 import Card from "@/components/card";
-import { useQuery } from "@tanstack/react-query";
-import { MovieListResponse } from "../mainPage/mainPageTypes/movie.types";
+import { useMovies } from "@/hooks/useGetMovies";
 
 const Movies = () => {
-  const {
-    data: movies,
-    isLoading,
-    isError,
-  } = useQuery<MovieListResponse>({
-    queryKey: ["fetchMovies"],
-    queryFn: async () => await getMovies(),
-  });
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching movies.</div>;
-
+  const { movies } = useMovies();
   return (
     <div className="py-10">
       <h2 className="text-2xl font-bold mb-6">Movies</h2>
