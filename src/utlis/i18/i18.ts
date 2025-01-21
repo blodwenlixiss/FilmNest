@@ -53,7 +53,7 @@ const resources = {
       logIn: "შესვლა",
       or: "ან",
       signUp: "რეგისტრაცია",
-      toContinue: "საგრძელებლად",
+      toContinue: "გასაგრძელებლად",
     },
   },
 };
