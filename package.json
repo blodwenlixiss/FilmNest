@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "ts-check": "tsc -b",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "prettier": "prettier . --write",
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
