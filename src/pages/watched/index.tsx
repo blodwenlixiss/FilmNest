@@ -5,7 +5,7 @@ import { SupabaseMovie } from "../planned";
 
 const Watched = () => {
   const [watchedMovie, setWatchedMovie] = useState<SupabaseMovie[] | null>(
-    null
+    null,
   );
 
   useEffect(() => {

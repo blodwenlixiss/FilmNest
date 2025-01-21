@@ -5,7 +5,7 @@ export const getTVShows = async () => {
   const language = i18n.language;
   try {
     const res = await httpClient.get(
-      `tv/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=1`
+      `tv/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=1`,
     );
     return res.data;
   } catch (error) {

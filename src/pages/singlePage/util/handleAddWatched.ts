@@ -6,7 +6,7 @@ import { TvShowDetails } from "../../../types/singlePage/singleTvshow.types";
 export const handleAddWatched = async (
   user: Session | null,
   movie: MovieDetailsType | TvShowDetails,
-  isMovie: boolean
+  isMovie: boolean,
 ) => {
   if (movie && user) {
     try {
@@ -33,7 +33,7 @@ export const handleAddWatched = async (
         if (deleteWatchedError) {
           console.error(
             "Error deleting from watched table:",
-            deleteWatchedError.message
+            deleteWatchedError.message,
           );
           alert("Failed to remove movie from watched.");
           return;
@@ -56,7 +56,7 @@ export const handleAddWatched = async (
         if (deleteInProgressError) {
           console.error(
             "Error deleting from in_progress table:",
-            deleteInProgressError.message
+            deleteInProgressError.message,
           );
           alert("Failed to remove movie from in-progress.");
           return;

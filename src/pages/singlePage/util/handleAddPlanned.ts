@@ -6,7 +6,7 @@ import { TvShowDetails } from "../../../types/singlePage/singleTvshow.types";
 export const handleAddPlanned = async (
   user: Session | null,
   movie: MovieDetailsType | TvShowDetails,
-  isMovie: boolean
+  isMovie: boolean,
 ) => {
   if (movie && user) {
     try {

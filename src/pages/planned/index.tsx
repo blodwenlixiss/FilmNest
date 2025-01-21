@@ -15,7 +15,7 @@ export interface SupabaseMovie {
 
 const Planned = () => {
   const [plannedMovies, setPlannedMovies] = useState<SupabaseMovie[] | null>(
-    null
+    null,
   );
 
   useEffect(() => {

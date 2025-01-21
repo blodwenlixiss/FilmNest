@@ -58,7 +58,7 @@ const Header = () => {
     const keyword = data.search.trim();
     if (keyword) {
       navigate(
-        `/search?search=${encodeURIComponent(keyword)}&type=${searchType}`
+        `/search?search=${encodeURIComponent(keyword)}&type=${searchType}`,
       );
     }
   };

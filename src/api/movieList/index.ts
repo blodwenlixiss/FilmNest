@@ -22,7 +22,7 @@ export const getRandomMovie = async () => {
     const totalPageNumber = 1;
     const randomPage = Math.floor(Math.random() * totalPageNumber) + 1;
     const res = await httpClient.get(
-      `movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=${randomPage}`
+      `movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=${randomPage}`,
     );
     return res.data;
   } catch (error) {
@@ -54,7 +54,7 @@ export const searchKeywords = async (query: string) => {
     }
 
     const res = await httpClient.get(
-      `search/keyword?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=1&query=${query}`
+      `search/keyword?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=${language}&page=1&query=${query}`,
     );
     return res.data;
   } catch (error) {

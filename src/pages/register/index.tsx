@@ -40,7 +40,7 @@ const Register = () => {
         onError: (error) => {
           console.error(t("SignUpFailed"), error);
         },
-      }
+      },
     );
   };
 
