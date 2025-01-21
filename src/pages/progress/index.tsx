@@ -37,7 +37,7 @@ const InProgress = () => {
                 overview={movie?.overview}
                 releaseDate={movie.release_date}
                 vote={movie.vote_average}
-                type="movies"
+                type="movie"
                 id={movie.movie_id}
               />
             </li>
@@ -59,7 +59,7 @@ const InProgress = () => {
                 overview={tvshow?.overview}
                 releaseDate={tvshow.release_date}
                 vote={tvshow.vote_average}
-                type="tvshow"
+                type="tv"
                 id={tvshow.movie_id}
               />
             </li>

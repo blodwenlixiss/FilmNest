@@ -34,7 +34,7 @@ const CarouselBlock = () => {
               key={movie.id}
               className="rounded-lg flex-none h-full"
             >
-              <NavLink to={`movies/${movie.id}`}>
+              <NavLink to={`movie/${movie.id}`}>
                 <div className="group relative w-full h-[300px] flex items-center justify-center">
                   <img
                     className="rounded-lg object-contain h-full max-h-full w-auto hover:"

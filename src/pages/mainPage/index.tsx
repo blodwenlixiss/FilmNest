@@ -28,7 +28,7 @@ const Home = () => {
                 overview={movie?.overview}
                 releaseDate={movie.release_date}
                 vote={movie.vote_average}
-                type="movies"
+                type="movie"
                 id={movie.id}
               />
             </li>
@@ -48,7 +48,7 @@ const Home = () => {
                 overview={tvshow?.overview}
                 releaseDate={tvshow.first_air_date}
                 vote={tvshow.vote_average}
-                type="tvshows"
+                type="tv"
                 id={tvshow.id}
               />
             </li>

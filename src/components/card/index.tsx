@@ -11,7 +11,7 @@ const Card: React.FC<{
   type: string;
 }> = ({ imageSrc, vote, releaseDate, overview, title, id, type }) => {
   return (
-    <div className="max-w-xs bg-inherit  rounded-lg shadow-xl overflow-hidden relative">
+    <div className="w-[280px] bg-inherit  rounded-lg shadow-xl overflow-hidden relative">
       <div className="relative">
         <img
           className="w-full h-64 object-cover object-top"

@@ -48,7 +48,7 @@ const Planned = () => {
                   overview={movie?.overview}
                   releaseDate={movie.release_date}
                   vote={movie.vote_average}
-                  type="movies"
+                  type="movie"
                   id={movie.movie_id}
                 />
               </li>
@@ -72,7 +72,7 @@ const Planned = () => {
                   overview={movie?.overview}
                   releaseDate={movie.release_date}
                   vote={movie.vote_average}
-                  type="movies"
+                  type="tv"
                   id={movie.movie_id}
                 />
               </li>
