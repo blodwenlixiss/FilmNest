@@ -1,4 +1,3 @@
-// Import statements remain unchanged
 import { login, LoginTypes } from "@/api/login";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,8 +6,10 @@ import { Controller, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SignInSchema } from "./schema";
 import { useMutation } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const {
@@ -23,15 +24,13 @@ const Login = () => {
     resolver: zodResolver(SignInSchema),
   });
 
-  console.log(errors);
-
   const { mutate: handleLogin } = useMutation({
     mutationFn: login,
     onSuccess: () => {
       navigate("/");
     },
     onError: (error) => {
-      console.error("Login failed:", error);
+      console.error(t("LoginFailed"), error);
     },
   });
 
@@ -41,9 +40,9 @@ const Login = () => {
 
   return (
     <>
-      <div className="">
+      <div>
         <NavLink className="bg-slate-400" to="/">
-          Back
+          {t("Back")}
         </NavLink>
       </div>
       <div className="w-full h-screen flex flex-col items-center justify-center">
@@ -59,7 +58,7 @@ const Login = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  placeholder="email"
+                  placeholder={t("Email")}
                   className="rounded-3xl h-14"
                 />
               )}
@@ -76,7 +75,7 @@ const Login = () => {
                 <Input
                   {...field}
                   type="password"
-                  placeholder="password"
+                  placeholder={t("Password")}
                   className="rounded-3xl h-14"
                 />
               )}
@@ -87,15 +86,15 @@ const Login = () => {
               </p>
             )}
             <Button type="submit" className="w-full rounded-3xl">
-              Sign In
+              {t("SignIn")}
             </Button>
             <span className="text-sm flex gap-2">
-              <span>No account?</span>
+              <span>{t("NoAccount")}</span>
               <NavLink
                 className="underline text-blue-600 hover:text-blue-800"
                 to="/register"
               >
-                Sign up!
+                {t("SignUp")}
               </NavLink>
             </span>
           </form>

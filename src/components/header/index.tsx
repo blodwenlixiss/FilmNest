@@ -8,6 +8,15 @@ import { useEffect, useState } from "react";
 import { getProfileInfo } from "@/api/account";
 import { Controller, useForm } from "react-hook-form";
 import { SearchFilter } from "@/pages/search/searchFilter";
+import { useTranslation } from "react-i18next";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+} from "@/components/ui/select";
 
 interface SearchFormValues {
   search: string;
@@ -17,9 +26,14 @@ const Header = () => {
   const { control, handleSubmit, setValue } = useForm<SearchFormValues>();
   const [user] = useAtom(userAtom);
   const [profileImg, setProfileImg] = useState("");
-  const [searchType, setSearchType] = useState("movie"); // Default to "movie"
+  const [searchType, setSearchType] = useState("movie");
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const handleLanguageChange = (value: string) => {
+    i18n.changeLanguage(value);
+  };
 
   useEffect(() => {
     if (user?.user.id) {
@@ -63,7 +77,7 @@ const Header = () => {
               <Input
                 {...field}
                 className="w-96"
-                placeholder={`Search ${searchType === "movie" ? "Movies" : "TV Shows"}`}
+                placeholder={t(searchType === "movie" ? "Movies" : "TVShows")}
               />
             )}
           />
@@ -91,7 +105,7 @@ const Header = () => {
                 to="/movies"
                 className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
-                Movies
+                {t("Movies")}
               </NavLink>
             </li>
             <li>
@@ -99,7 +113,7 @@ const Header = () => {
                 to="/tvshows"
                 className="transition-colors duration-300 hover:text-white bg-transparent shadow-none text-inherit p-2 rounded-lg hover:bg-red-600"
               >
-                TV Shows
+                {t("TVShows")}
               </NavLink>
             </li>
           </ul>
@@ -108,7 +122,17 @@ const Header = () => {
       <div>
         <ul className="flex gap-6 items-center">
           <li>
-            <Button>EN</Button>
+            <Select value={i18n.language} onValueChange={handleLanguageChange}>
+              <SelectTrigger className="w-[80px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="w-[80px]">
+                <SelectGroup>
+                  <SelectItem value="en">Eng</SelectItem>
+                  <SelectItem value="ka">Geo</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </li>
           <li>
             <ModeToggle />
@@ -135,7 +159,7 @@ const Header = () => {
                 to="/login"
                 className="transition-colors duration-300 hover:text-white bg-transparent font-bold text-sm border-2 hover:border-red-600 text-inherit py-2 px-4 rounded-3xl hover:bg-red-600"
               >
-                Login
+                {t("Login")}
               </NavLink>
             )}
           </li>

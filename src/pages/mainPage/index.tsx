@@ -15,15 +15,18 @@ const Home = () => {
     queryKey: ["fetchMovies"],
     queryFn: async () => await getMovies(),
   });
+
   const { data: tvShows } = useQuery<TVShowListResponse>({
     queryKey: ["fetchTVShows"],
     queryFn: async () => await getTVShows(),
   });
+
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching movies.</div>;
 
   const homeMovieList = movies?.results?.slice(0, 8) || [];
   const homeTVShowsList = tvShows?.results?.slice(0, 8) || [];
+
   return (
     <>
       <div className="mt-5">

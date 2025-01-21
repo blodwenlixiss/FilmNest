@@ -7,17 +7,19 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function SearchFilter({
   onTypeChange,
 }: {
   onTypeChange: (type: string) => void;
 }) {
+  const { t } = useTranslation();
   const [type, setType] = useState("movie");
 
   const handleChange = (value: string) => {
     setType(value);
-    onTypeChange(value); // Notify parent about the type change
+    onTypeChange(value);
   };
   return (
     <Select value={type} onValueChange={handleChange}>
@@ -26,8 +28,8 @@ export function SearchFilter({
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectItem value="movie">Movie</SelectItem>
-          <SelectItem value="tv">Tv Show</SelectItem>
+          <SelectItem value="movie">{t("Movies")}</SelectItem>
+          <SelectItem value="tv">{t("TVShows")}</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>

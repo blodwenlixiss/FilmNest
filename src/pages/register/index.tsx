@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SignUpValues } from "@/api/register";
 import { useSignUp } from "@/react-query/mutation/auth";
 import { SignUpSchema } from "./schema";
+import { useTranslation } from "react-i18next";
 
 const signUpFormDefaultValues = {
   email: "",
@@ -15,6 +16,7 @@ const signUpFormDefaultValues = {
 };
 
 const Register = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const {
@@ -36,7 +38,7 @@ const Register = () => {
           navigate("/");
         },
         onError: (error) => {
-          console.error("Signup failed:", error);
+          console.error(t("SignUpFailed"), error);
         },
       }
     );
@@ -55,7 +57,7 @@ const Register = () => {
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="Username"
+              placeholder={t("Username")}
               className="rounded-3xl h-14"
             />
           )}
@@ -69,7 +71,7 @@ const Register = () => {
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="Full Name"
+              placeholder={t("FullName")}
               className="rounded-3xl h-14"
             />
           )}
@@ -85,7 +87,7 @@ const Register = () => {
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="Email"
+              placeholder={t("Email")}
               type="email"
               className="rounded-3xl h-14"
             />
@@ -100,7 +102,7 @@ const Register = () => {
           render={({ field }) => (
             <Input
               {...field}
-              placeholder="Password"
+              placeholder={t("Password")}
               type="password"
               className="rounded-3xl h-14"
             />
@@ -111,15 +113,15 @@ const Register = () => {
         )}
 
         <Button type="submit" className="w-full rounded-3xl">
-          Sign Up
+          {t("SignUp")}
         </Button>
         <span className="text-sm flex gap-2">
-          <span>Have an account?</span>
+          <span>{t("HaveAccount")}</span>
           <NavLink
             className="underline text-blue-600 hover:text-blue-800"
             to="/login"
           >
-            Sign In!
+            {t("SignIn")}
           </NavLink>
         </span>
       </form>
