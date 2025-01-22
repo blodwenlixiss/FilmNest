@@ -17,7 +17,7 @@ const TvShows = () => {
               overview={tvshow?.overview}
               releaseDate={tvshow.first_air_date}
               vote={tvshow.vote_average}
-              type="tvshows"
+              type="tv"
               id={tvshow.id}
             />
           </li>

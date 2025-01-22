@@ -64,7 +64,7 @@ const Aside = () => {
         </svg>
       </button>
       <div
-        className={`fixed top-0 left-0 h-screen bg-opacity-60 bg-black w-full transform ${
+        className={`fixed z-50 top-0 left-0 h-screen bg-opacity-60 bg-black w-full transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300`}
         onClick={() => setIsSidebarOpen(false)}
