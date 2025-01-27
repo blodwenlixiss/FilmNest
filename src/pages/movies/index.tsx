@@ -15,7 +15,7 @@ const Movies = () => {
               overview={movie?.overview}
               releaseDate={movie.release_date}
               vote={movie.vote_average}
-              type="movies"
+              type="movie"
               id={movie.id}
             />
           </li>

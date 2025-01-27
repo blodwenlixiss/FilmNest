@@ -29,7 +29,7 @@ const RandomMovie = () => {
           alt={randomMovie?.title}
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md">
-          <NavLink to={`movies/${randomMovie?.id}`}>
+          <NavLink to={`movie/${randomMovie?.id}`}>
             <span className="text-white text-lg font-semibold">
               View Details
             </span>

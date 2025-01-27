@@ -139,11 +139,9 @@ const Header = () => {
           <ModeToggle />
           <NavLink to={user ? "profile" : "/login"}>
             {!profileImg ? (
-              <img
-                className="w-10 h-10 rounded-full bg-blue-50"
-                src="https://api.dicebear.com/9.x/avataaars/svg?seed=Felix"
-                alt="avatar"
-              />
+              <Button className="bg-transparent text-foreground hover:bg-red-500">
+                {t("Login")}
+              </Button>
             ) : (
               <img
                 className="w-10 h-10 rounded-full bg-blue-50"
